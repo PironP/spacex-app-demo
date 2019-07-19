@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { Mission } from '../../models/mission.model';
-import { Observable } from 'rxjs';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-mission-details',
@@ -14,6 +14,7 @@ export class MissionDetailsPage implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private inAppBrowser: InAppBrowser,
     private location: Location) { }
 
   ngOnInit() {
@@ -22,5 +23,9 @@ export class MissionDetailsPage implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  openLink(link: string) {
+    this.inAppBrowser.create(link, '_system');
   }
 }

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { CoreModule } from '../../app-core/core.module';
 
 import { MissionsPage } from './missions.page';
 import { MissionResolver } from '../resolvers/mission.resolver';
@@ -32,6 +33,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    CoreModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MissionsPage]

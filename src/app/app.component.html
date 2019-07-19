@@ -37,20 +37,22 @@
                 {{ p.title }}
               </ion-label>
             </ion-item>
+            <div class="fixed-bottom">
+              <ion-item routerLink="/settings" routerDirection="forward"
+                [class.active-menu-item]="selectedPath?.includes('settings')">
+                Settings
+              </ion-item>
+              <ion-item [routerLink]="['/about']" routerDirection="forward"
+                [class.active-menu-item]="selectedPath?.includes('about')">
+                About
+              </ion-item>
+              <ion-item>
+                <ion-badge color="warning">v 1.0.1 - dev</ion-badge>
+              </ion-item>
+            </div>
           </ion-menu-toggle>
         </ion-list>
 
-        <div class="fixed-bottom">
-          <ion-item routerLink="/settings" routerDirection="forward">
-            Settings
-          </ion-item>
-          <ion-item [routerLink]="['/about']" routerDirection="forward">
-            About
-          </ion-item>
-          <ion-item>
-            <ion-badge color="danger">v 1.0.0 - dev</ion-badge>
-          </ion-item>
-        </div>
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>

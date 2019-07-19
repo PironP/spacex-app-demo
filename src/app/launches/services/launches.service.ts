@@ -42,7 +42,7 @@ export class LaunchesService {
   }
 
   getUpcomingLaunches(): Observable<Launch[]> {
-    const requestEndpoint = `${this.apiBaseUrl}/launches/upcoming?order=desc`;
+    const requestEndpoint = `${this.apiBaseUrl}/launches/upcoming?order=asc`;
     return this.http.get<Launch[]>(requestEndpoint).pipe(
       map(missions => {
         return missions;

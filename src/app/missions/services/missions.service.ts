@@ -22,4 +22,13 @@ export class MissionsService {
       })
     );
   }
+
+  getMissions(): Observable<Mission[]> {
+    const requestEndpoint = `${this.apiBaseUrl}/missions`;
+    return this.http.get<Mission[]>(requestEndpoint).pipe(
+      map((missions: Mission[]) => {
+        return missions;
+      })
+    );
+  }
 }

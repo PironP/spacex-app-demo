@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Mission } from '../models/mission.model';
+import { Observable } from 'rxjs';
+import { MissionsService } from '../services/missions.service';
 
 @Component({
   selector: 'app-missions',
@@ -7,14 +9,16 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   styleUrls: ['./missions.page.scss'],
 })
 export class MissionsPage implements OnInit {
-  missionId = 'F3364BF';
+  missions$: Observable<Mission[]>;
 
-  constructor(private inAppBrowser: InAppBrowser) { }
+  constructor(private missionsService: MissionsService) { }
 
   ngOnInit() {
+    this.missions$ = this.missionsService.getMissions();
+    this.missions$.toPromise()
+      .then(missions => {
+        console.log(missions);
+      });
   }
 
-  openLink(link: string) {
-    this.inAppBrowser.create(link, '_system');
-  }
 }

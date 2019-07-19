@@ -9,15 +9,11 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class AboutPage implements OnInit {
 
-  constructor( 
+  constructor(
     private location: Location,
     private inAppBrowser: InAppBrowser) { }
 
   ngOnInit() {
-  }
-
-  goBack() {
-    this.location.back();
   }
 
   openLink(link: string) {

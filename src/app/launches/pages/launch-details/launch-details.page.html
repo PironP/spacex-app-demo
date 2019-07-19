@@ -11,6 +11,42 @@
 
 <ion-content padding>
   <ng-container *ngIf="launch">
-    <ngx-json-viewer [json]="launch" [expanded]="false"></ngx-json-viewer>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{launch.mission_name}}
+          <img class="mission-patch" *ngIf="launch.links.mission_patch" [src]="launch.links.mission_patch">
+        </ion-card-title>
+        <ion-note color="secondary">{{launch.launch_site.site_name_long}}</ion-note>
+        <ion-card-subtitle *ngIf="!launch.upcoming">{{launch.launch_date_utc | date:'fullDate'}}</ion-card-subtitle>
+        <ion-card-subtitle *ngIf="launch.upcoming">Launch {{timeToLaunch}}</ion-card-subtitle>
+        <ion-button *ngIf="launch.upcoming" size="small" color="warning" disabled="true">Upcomming</ion-button>
+        <ion-button *ngIf="!launch.upcoming && launch.success" size="small" color="success" disabled="true">Success</ion-button>
+        <ion-button *ngIf="!launch.upcoming && !launch.success" size="small" color="danger" disabled="true">Failed</ion-button>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <h4>Rocket : {{launch.rocket.rocket_name}}</h4>
+        </ion-row>
+          <p *ngIf="launch.rocket.first_stage.cores[0].landing_intent && launch.rocket.first_stage.cores[0].landing_vehicle">
+            Landing Vehicle : {{launch.rocket.first_stage.cores[0].landing_vehicle}}
+          </p>
+          <p *ngIf="launch.rocket.second_stage.payloads[0].orbit">
+            Orbit : {{launch.rocket.second_stage.payloads[0].orbit}}
+          </p>
+        <p *ngIf="launch.ships.length === 0">No ship</p>
+        <ng-container *ngIf="launch.ships.length > 0">
+          <p *ngIf="launch.ships.length === 1">{{launch.ships.length}} ship</p>
+          <p *ngIf="launch.ships.length > 1">{{launch.ships.length}} ships</p>
+          <ul>
+            <li *ngFor="let ship of launch.ships" class="ship-item">{{ship}}</li>
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="launch.details">
+          <hr class="divider">
+          <p class="launch-details">{{launch.details}}</p>
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
   </ng-container>
 </ion-content>

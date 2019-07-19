@@ -13,8 +13,4 @@ export class SettingsPage implements OnInit {
   ngOnInit() {
   }
 
-  goBack() {
-    this.location.back();
-  }
-
 }

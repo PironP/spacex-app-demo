@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LaunchesService } from '../services/launches.service';
-import { Launch } from '../Models/launch.model';
+import { Launch } from '../models/launch.model';
 
 @Injectable({
     providedIn: 'root',

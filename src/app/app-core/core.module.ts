@@ -17,7 +17,6 @@ import { LottieAnimationViewModule } from 'ng-lottie';
     CommonModule,
     IonicModule,
     LottieAnimationViewModule.forRoot()
-
   ],
   exports: [
     SkeletonLoaderComponent,
