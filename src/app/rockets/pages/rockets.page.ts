@@ -24,7 +24,7 @@ export class RocketsPage implements OnInit {
   doRefresh(event) {
     this.rockets$ = this.rocketsService.getRockets();
     this.rockets$.toPromise()
-      .then(() => { if (event) event.target.complete(); });
+      .then(() => { if (event) { event.target.complete(); } });
   }
 
 }

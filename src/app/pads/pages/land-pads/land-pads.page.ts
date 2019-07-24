@@ -15,4 +15,10 @@ export class LandPadsPage implements OnInit {
   ngOnInit() {
   }
 
+
+  doRefresh(event) {
+    // this.launchPads$ = this.padsService.getLaunchPads();
+    // this.launchPads$.toPromise()
+    //   .then(() => { if (event) { event.target.complete(); } });
+  }
 }

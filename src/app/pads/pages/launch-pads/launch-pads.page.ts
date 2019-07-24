@@ -18,4 +18,9 @@ export class LaunchPadsPage implements OnInit {
     this.launchPads$ = this.padsService.getLaunchPads();
   }
 
+  doRefresh(event) {
+    this.launchPads$ = this.padsService.getLaunchPads();
+    this.launchPads$.toPromise()
+      .then(() => { if (event) { event.target.complete(); } });
+  }
 }

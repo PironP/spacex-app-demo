@@ -10,6 +10,9 @@
 </ion-header>
 
 <ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <ng-container *ngIf="upcomingLaunches$ | async as launches; else lottie_loader">
     <ion-list>
       <ion-item-sliding *ngFor="let l of launches">

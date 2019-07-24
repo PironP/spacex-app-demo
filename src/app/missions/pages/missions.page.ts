@@ -17,4 +17,10 @@ export class MissionsPage implements OnInit {
     this.missions$ = this.missionsService.getMissions();
   }
 
+  doRefresh(event) {
+    this.missions$ = this.missionsService.getMissions();
+    this.missions$.toPromise()
+      .then(() => { if (event) { event.target.complete(); } });
+  }
+
 }

@@ -19,7 +19,7 @@ const routes: Routes = [
       },
       {
         path: ':id',
-        loadChildren: './rocket-details/rocket-details.module#RocketsDetailsPageModule',
+        loadChildren: './rocket-details/rockets-details.module#RocketsDetailsPageModule',
         resolve: {
           rocket: RocketResolver
         }

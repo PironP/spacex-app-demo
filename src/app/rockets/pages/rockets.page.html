@@ -10,10 +10,8 @@
 </ion-header>
 
 <ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" color="primary">
-    <ion-refresher-content
-      
-    ></ion-refresher-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
   <ng-container *ngIf="rockets$ | async as rockets; else lottie_loader">
     <ion-list>

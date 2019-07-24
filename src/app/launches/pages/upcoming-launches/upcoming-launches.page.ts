@@ -19,4 +19,10 @@ export class UpcomingLaunchesPage implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.upcomingLaunches$ = this.launchesService.getUpcomingLaunches();
   }
+
+  doRefresh(event) {
+    this.upcomingLaunches$ = this.launchesService.getUpcomingLaunches();
+    this.upcomingLaunches$.toPromise()
+      .then(() => { if (event) { event.target.complete(); } });
+  }
 }

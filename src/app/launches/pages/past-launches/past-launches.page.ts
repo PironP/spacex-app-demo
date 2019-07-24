@@ -19,4 +19,10 @@ export class PastLaunchesPage implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.pastLaunches$ = this.launchesService.getPastLaunches();
   }
+
+  doRefresh(event) {
+    this.pastLaunches$ = this.launchesService.getPastLaunches();
+    this.pastLaunches$.toPromise()
+      .then(() => { if (event) { event.target.complete(); } });
+  }
 }
