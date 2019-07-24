@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: './app-core/pages/about/about.module#AboutPageModule' },
   { path: 'settings', loadChildren: './app-core/pages/settings/settings.module#SettingsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
+  { path: 'rockets', loadChildren: './rockets/pages/rockets.module#RocketsPageModule' },
   ];
 
 @NgModule({

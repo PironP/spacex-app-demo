@@ -15,10 +15,6 @@ export class MissionsPage implements OnInit {
 
   ngOnInit() {
     this.missions$ = this.missionsService.getMissions();
-    this.missions$.toPromise()
-      .then(missions => {
-        console.log(missions);
-      });
   }
 
 }
