@@ -15,8 +15,8 @@ export class RocketsService {
     this.apiBaseUrl = 'https://api.spacexdata.com/v3';
   }
 
-  getRocket(missionId: string): Observable<Rocket> {
-    const requestEndpoint = `${this.apiBaseUrl}/rockets/${missionId}`;
+  getRocket(rocketId: string): Observable<Rocket> {
+    const requestEndpoint = `${this.apiBaseUrl}/rockets/${rocketId}`;
     return this.http.get<Rocket>(requestEndpoint).pipe(
       map((rocket: Rocket) => {
         return rocket;

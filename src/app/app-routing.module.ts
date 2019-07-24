@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'settings', loadChildren: './app-core/pages/settings/settings.module#SettingsPageModule' },
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'rockets', loadChildren: './rockets/pages/rockets.module#RocketsPageModule' },
+  { path: 'payloads', loadChildren: './payloads/pages/payloads.module#PayloadsPageModule' },
   ];
 
 @NgModule({

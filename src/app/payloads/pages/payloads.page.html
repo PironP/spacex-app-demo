@@ -1,0 +1,30 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Payloads
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="payloads$ | async as payloads; else lottie_loader">
+      <ion-list>
+        <ng-container *ngFor="let payload of payloads">
+          <ion-item [routerLink]="['/payloads/', payload.payload_id]" routerDirection="forward">
+            {{payload.payload_type}}
+            {{payload.payload_id}}
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ion-content>
+  
+  <ng-template #lottie_loader>
+    <app-lottie-loader></app-lottie-loader>
+  </ng-template>

@@ -1,0 +1,24 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot=start>
+        <ion-button shape="round" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title *ngIf="payload">{{payload.payload_id}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    
+  <ion-content padding>
+    <ng-container *ngIf="payload">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>{{payload.payload_id}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ion-content>
