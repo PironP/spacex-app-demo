@@ -79,7 +79,6 @@ export class CoresPage implements OnInit {
   }
 
   goToCoreDetails(core: Core) {
-    console.log(core);
     const navigationExtras: NavigationExtras = {
       state: {
         core

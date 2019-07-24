@@ -1,16 +1,31 @@
 <ion-header>
-  <ion-toolbar color="primary">
-    <ion-buttons slot=start>
-      <ion-button shape="round" (click)="goBack()">
-        <ion-icon name="arrow-back"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    <ion-title>{{core.core_serial}}</ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content padding>
-  <ng-container *ngIf="core">
-    <ngx-json-viewer [json]="core" [expanded]="true"></ngx-json-viewer>
-  </ng-container>
-</ion-content>
+    <ion-toolbar color="primary">
+      <ion-buttons slot=start>
+        <ion-button shape="round" (click)="goBack()">
+          <ion-icon name="arrow-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title *ngIf="core">{{core.core_serial}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content padding>
+    <ng-container *ngIf="core">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle>{{core.status}}</ion-card-subtitle>
+          <ion-card-title>{{core.core_serial}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <ng-container *ngIf="core.missions.length > 0">
+            <h5>Mission(s)</h5>
+            <ul>
+              <li *ngFor="let mission of core.missions">{{mission.name}}</li>
+            </ul>
+          </ng-container>
+          {{core.details}}
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </ion-content>
