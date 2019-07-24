@@ -1,9 +1,30 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>rockets-details</ion-title>
+  <ion-toolbar color="primary">
+    <ion-buttons slot=start>
+      <ion-button shape="round" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="rocket">{{rocket.rocket_name}}</ion-title>
   </ion-toolbar>
 </ion-header>
-
-<ion-content>
-
+  
+<ion-content padding>
+  <ng-container *ngIf="rocket">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{rocket.rocket_name}}</ion-card-title>
+        <ion-chip *ngIf="rocket.wikipedia" (click)="openLink(rocket.wikipedia)" color="dark">
+          <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
+          <ion-label>Wikipedia</ion-label>
+        </ion-chip>
+      </ion-card-header>
+    
+      <ion-card-content>
+        <ng-container *ngIf="rocket.flickr_images.length > 0">
+            <img class="rocket-image" [src]="rocket.flickr_images[0]">
+        </ng-container>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
 </ion-content>

@@ -16,7 +16,7 @@
   <ng-container *ngIf="rockets$ | async as rockets; else lottie_loader">
     <ion-list>
       <ng-container *ngFor="let rocket of rockets">
-        <ion-item [routerLink]="['/rockets/', rocket.id]" routerDirection="forward">
+        <ion-item [routerLink]="['/rockets/', rocket.rocket_id]" routerDirection="forward">
           {{rocket.rocket_name}}
         </ion-item>
       </ng-container>
