@@ -1,0 +1,14 @@
+.active-pad {
+    border-left: 6px solid var(--ion-color-success);
+    margin-bottom: 2px;
+}
+
+.retired-pad {
+    border-left: 6px solid var(--ion-color-medium);
+    margin-bottom: 2px;
+}
+
+.under-construction-pad {
+    border-left: 6px solid var(--ion-color-warning);
+    margin-bottom: 2px;
+}

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Landing pads
+    <ion-title>Land pads
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -12,4 +12,31 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
     <ion-refresher-content></ion-refresher-content>
   </ion-refresher>
+  <div *ngIf="landPads$ | async as landPads">
+    <ion-item *ngFor="let pad of landPads"
+      [ngClass]="{'active-pad': pad.status === 'active', 'retired-pad': pad.status === 'retired', 'under-construction-pad': pad.status === 'under construction'}">
+      <ion-grid>
+        <ion-row>
+          <ion-label class="d-inline">
+            <h2>{{pad.location.name}} - {{pad.location.region}}</h2>
+            <p class="ion-text-wrap">{{pad.details}}</p>
+          </ion-label>
+          <ion-note slot="end" class="d-none d-md-block align-self-center">
+            <ion-row>
+              Attempted landings: {{pad.attempted_landings}}
+            </ion-row>
+            <ion-row>
+              Successful landings : {{pad.successful_landings}}
+            </ion-row>
+          </ion-note>
+        </ion-row>
+        <ion-row>
+          <ion-chip *ngIf="pad.wikipedia" (click)="openLink(pad.wikipedia)" color="dark">
+            <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
+            <ion-label>Wikipedia</ion-label>
+          </ion-chip>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
 </ion-content>
