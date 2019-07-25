@@ -30,29 +30,28 @@
           </ion-card>
         </div>
         <ion-list>
-          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-            <ion-item [routerLink]="[p.url]" routerDirection="forward"
-              [class.active-menu-item]="selectedPath?.includes(p.title.toLowerCase())">
-              <ion-label>
-                {{ p.title }}
-              </ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ng-container *ngFor="let p of pages">
+              <ion-item [routerLink]="[p.url]" routerDirection="forward"
+                [class.active-menu-item]="selectedPath?.includes(p.title.toLowerCase())">
+                <ion-label>
+                  {{ p.title }}
+                </ion-label>
+              </ion-item>
+            </ng-container>
+            <ion-item routerLink="/settings" routerDirection="forward"
+              [class.active-menu-item]="selectedPath?.includes('settings')">
+              Settings
             </ion-item>
-            <div class="fixed-bottom">
-              <ion-item routerLink="/settings" routerDirection="forward"
-                [class.active-menu-item]="selectedPath?.includes('settings')">
-                Settings
-              </ion-item>
-              <ion-item [routerLink]="['/about']" routerDirection="forward"
-                [class.active-menu-item]="selectedPath?.includes('about')">
-                About
-              </ion-item>
-              <ion-item>
-                <ion-badge color="success">v 1.0.2</ion-badge>
-              </ion-item>
-            </div>
+            <ion-item [routerLink]="['/about']" routerDirection="forward"
+              [class.active-menu-item]="selectedPath?.includes('about')">
+              About
+            </ion-item>
+            <ion-item>
+              <ion-badge color="success">v 1.0.2</ion-badge>
+            </ion-item>
           </ion-menu-toggle>
         </ion-list>
-
       </ion-content>
     </ion-menu>
     <ion-router-outlet main></ion-router-outlet>
