@@ -15,6 +15,7 @@
         <ion-card-header>
           <ion-card-subtitle>{{core.status}}</ion-card-subtitle>
           <ion-card-title>{{core.core_serial}}</ion-card-title>
+          <ion-card-subtitle>Launch : {{core.original_launch | date: 'dd/MM/yyyy HH:mm'}}</ion-card-subtitle>
         </ion-card-header>
       
         <ion-card-content>
@@ -25,6 +26,8 @@
             </ul>
           </ng-container>
           {{core.details}}
+          <p *ngIf="core.reuse_count === 0">Never reused</p>
+          <p *ngIf="core.reuse_count > 0">Reused : {{core.reuse_count}}</p>
         </ion-card-content>
       </ion-card>
     </ng-container>

@@ -70,6 +70,7 @@ export class CoresPage implements OnInit {
       event.target.complete();
     }, 2000);
   }
+
   sort(event: any) {
     if (event.detail.checked) {
       this.orderByStatus();

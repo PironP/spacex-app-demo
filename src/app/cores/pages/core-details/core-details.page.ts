@@ -18,6 +18,8 @@ export class CoreDetailsPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.router.getCurrentNavigation().extras.state) {
         this.core = this.router.getCurrentNavigation().extras.state.core;
+      } else {
+        this.goBack();
       }
     });
   }

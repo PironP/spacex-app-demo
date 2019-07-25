@@ -31,33 +31,35 @@
   </ion-refresher>
   <ion-list *ngIf="cores$ | async as cores">
     <ion-item *ngFor="let core of cores">
-      <!-- <ion-item-divider
-        [color]="(core.status === 'unknown') ? 'medium' : (core.status === 'active') ? 'success' : (core.status === 'inactive') ? 'warning' : 'danger'"
-        sticky="true">
-        <ion-label>
-          {{core.core_serial}}
-        </ion-label>
-      </ion-item-divider> -->
       <ion-grid>
         <ion-row>
-          {{core.core_serial}}
+          <ion-col size="8">
+            {{core.core_serial}}
+          </ion-col>
+          <ion-col size="4">
+            <ion-icon *ngIf="core.status === 'active'" name="rocket"></ion-icon>
+            <ion-icon *ngIf="core.status === 'lost'" name="bonfire"></ion-icon>
+            <ion-icon *ngIf="core.status === 'unknown'" name="help"></ion-icon>
+            <ion-icon *ngIf="core.status === 'inactive'" name="moon"></ion-icon>
+            {{core.status}}
+          </ion-col>
         </ion-row>
         <ion-row>
-          <ion-icon *ngIf="core.status === 'active'" name="rocket"></ion-icon>
-          <ion-icon *ngIf="core.status === 'lost'" name="bonfire"></ion-icon>
-          <ion-icon *ngIf="core.status === 'unknown'" name="help"></ion-icon>
-          <ion-icon *ngIf="core.status === 'inactive'" name="moon"></ion-icon>
-          {{core.status}}
+          Launch : {{core.original_launch | date: 'dd/MM/yyyy'}}
         </ion-row>
         <ion-row>
-          <ion-button expand="full" class="mr-1" (click)="goToCoreDetails(core)">
-            Details
-            <ion-icon class="pl-3" name="add"></ion-icon>
-          </ion-button>
-          <ion-button expand="full" class="mr-1" [routerLink]="['/launches/', core.missions[0].flight]">
-            Launch
-            <ion-icon class="pl-3" name="arrow-forward"></ion-icon>
-          </ion-button>
+          <ion-col size="5">
+            <ion-button expand="full" class="mr-1" (click)="goToCoreDetails(core)">
+              Details
+              <ion-icon class="pl-3" name="add"></ion-icon>
+            </ion-button>
+          </ion-col>
+          <ion-col size="5" offset="1">
+            <ion-button expand="full" class="mr-1" [routerLink]="['/launches/', core.missions[0].flight]">
+              Launch
+              <ion-icon class="pl-3" name="arrow-forward"></ion-icon>
+            </ion-button>
+          </ion-col>
         </ion-row>
       </ion-grid>
     </ion-item>
