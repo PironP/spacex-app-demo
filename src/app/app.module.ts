@@ -12,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { CoreModule } from './app-core/core.module';
 import { ImageModalPageModule } from './image-modal/image-modal.module';
+import { IonicStorageModule } from '@ionic/storage';
+
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { ImageModalPageModule } from './image-modal/image-modal.module';
     NgProgressHttpModule,
     CoreModule,
     ImageModalPageModule,
+    IonicStorageModule.forRoot(),
   ],
   providers: [
     StatusBar,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { ThemeService } from 'src/app/theme.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,10 +8,15 @@ import { Location } from '@angular/common';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
+  selectedTheme: string;
 
-  constructor( private location: Location) { }
+  constructor(private location: Location, private theme: ThemeService) {
+  }
 
   ngOnInit() {
   }
 
+  toggleActiveTheme() {
+    this.theme.toggleActiveTheme();
+  }
 }

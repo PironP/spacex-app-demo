@@ -4,6 +4,8 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent } from '@angular/router';
+import { Storage } from '@ionic/storage';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -60,9 +62,15 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private router: Router
+    private router: Router,
+    private storage: Storage,
+    private theme: ThemeService
   ) {
     this.initializeApp();
+
+    storage.get('dark-mode').then(darkMode => {
+      theme.initActiveTheme(darkMode);
+    });
   }
 
   private initializeApp() {
