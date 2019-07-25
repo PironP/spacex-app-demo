@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot=start>
+      <ion-button shape="round" (click)="goBack()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ship.ship_name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content padding>
+  <ng-container *ngIf="ship">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>{{ship.ship_name}}</ion-card-title>
+        <ion-card-subtitle>{{ship.ship_type}} - {{ship.home_port}}</ion-card-subtitle>
+        <img *ngIf="ship.image" class="ship-image" [src]="ship.image">
+      </ion-card-header>
+      <ion-card-content>
+        <ion-row>
+          <ion-button *ngIf="ship.active" size="small" color="success" disabled="true">ACTIVE</ion-button>
+          <ion-button *ngIf="!ship.ship" size="small" color="danger" disabled="true">INACTIVE</ion-button>
+          <ion-chip *ngIf="ship.url" (click)="openLink(ship.url)" color="success">
+            <ion-icon name="logo-chrome" color="success"></ion-icon>
+            <ion-label>Website</ion-label>
+          </ion-chip>
+        </ion-row>
+        <ion-row>
+          <ng-container *ngIf="ship.roles.length > 0">
+            <p>Roles :</p>
+            <ul>
+              <li *ngFor="let role of ship.roles" class="ship-list-item">{{role}}</li>
+            </ul>
+          </ng-container>
+        </ion-row>
+        <ion-row>
+          <ng-container *ngIf="ship.missions.length > 0">
+            <p *ngIf="ship.missions.length === 1">{{ship.missions.length}} mission</p>
+            <p *ngIf="ship.missions.length > 1">{{ship.missions.length}} missions</p>
+            <ul>
+              <li *ngFor="let mission of ship.missions" class="ship-list-item">{{mission.name}} - Flight : {{mission.flight}}</li>
+            </ul>
+          </ng-container>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

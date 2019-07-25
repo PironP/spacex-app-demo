@@ -35,6 +35,19 @@ export interface Core {
     landing_vehicle: string;
 }
 
+export interface Core {
+    core_serial: string;
+    flight: number;
+    block?: number;
+    gridfins: boolean;
+    legs: boolean;
+    reused: boolean;
+    land_success?: boolean;
+    landing_intent: boolean;
+    landing_type: string;
+    landing_vehicle: string;
+}
+
 export interface Payload {
     payload_id: string;
     norad_id: number[];

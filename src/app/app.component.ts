@@ -49,6 +49,10 @@ export class AppComponent {
     {
       title: 'History',
       url: '/history',
+    },
+    {
+      title: 'Ships',
+      url: '/ships',
     }
   ];
 

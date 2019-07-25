@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Ships
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="ships$ | async as ships; else lottie_loader">
+      <ion-list>
+        <ng-container *ngFor="let ship of ships">
+          <ion-item [routerLink]="['/ships/', ship.ship_id]" routerDirection="forward">
+            <ion-thumbnail slot="start">
+              <img *ngIf="ship.image" [src]="ship.image">
+              <ion-icon *ngIf="!ship.image" name="boat" class="ship-icon"></ion-icon>
+            </ion-thumbnail>
+            <ion-label class="d-inline">
+              <h2>{{ship.ship_name}}</h2>
+              <p> {{ship.home_port}}</p>
+            </ion-label>
+          </ion-item>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ion-content>
+  
+  <ng-template #lottie_loader>
+    <app-lottie-loader></app-lottie-loader>
+  </ng-template>
+  
