@@ -16,20 +16,9 @@
         <ion-card-subtitle>{{mission.mission_id}}</ion-card-subtitle>
         <ion-card-title>{{mission.mission_name}}</ion-card-title>
       </ion-card-header>
-    
+
       <ion-card-content>
-        <ng-container *ngIf="mission.manufacturers.length > 0">
-          <h5>Manufacturers</h5>
-          <ul>
-            <li *ngFor="let manufacturer of mission.manufacturers">{{manufacturer}}</li>
-          </ul>
-        </ng-container>
-        <ng-container *ngIf="mission.payload_ids.length > 0">
-          <h5>Payloads</h5>
-          <ul>
-            <li *ngFor="let payload of mission.payload_ids">{{payload}}</li>
-          </ul>
-        </ng-container>
+        {{mission.description}}
         <ion-row>
           <ion-chip *ngIf="mission.wikipedia" (click)="openLink(mission.wikipedia)" color="dark">
               <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
@@ -44,7 +33,18 @@
             <ion-label>Website</ion-label>
           </ion-chip>
         </ion-row>
-        {{mission.description}}
+        <ng-container *ngIf="mission.manufacturers.length > 0">
+          <h5 class="mt-4">Manufacturers</h5>
+          <ul>
+            <li *ngFor="let manufacturer of mission.manufacturers">{{manufacturer}}</li>
+          </ul>
+        </ng-container>
+        <ng-container *ngIf="mission.payload_ids.length > 0">
+          <h5>Payloads</h5>
+          <ul>
+            <li *ngFor="let payload of mission.payload_ids">{{payload}}</li>
+          </ul>
+        </ng-container>
       </ion-card-content>
     </ion-card>
   </ng-container>

@@ -8,7 +8,7 @@
     <ion-title *ngIf="rocket">{{rocket.rocket_name}}</ion-title>
   </ion-toolbar>
 </ion-header>
-  
+
 <ion-content padding>
   <ng-container *ngIf="rocket">
     <ion-card>
@@ -19,11 +19,14 @@
           <ion-label>Wikipedia</ion-label>
         </ion-chip>
       </ion-card-header>
-    
+
       <ion-card-content>
         <ng-container *ngIf="rocket.flickr_images.length > 0">
             <img class="rocket-image" [src]="rocket.flickr_images[0]">
         </ng-container>
+      </ion-card-content>
+      <ion-card-content>
+        {{rocket.description}}
       </ion-card-content>
     </ion-card>
   </ng-container>

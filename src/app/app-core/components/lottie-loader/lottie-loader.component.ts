@@ -11,7 +11,7 @@ export class LottieLoaderComponent implements OnInit {
 
   constructor() {
     this.lottieConfig = {
-      path: 'assets/lottie-files/loading.json',
+      path: 'assets/lottie-files/rocket.json',
       autoplay: true,
       loop: true,
       renderer: 'canvas'

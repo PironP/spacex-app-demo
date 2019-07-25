@@ -25,7 +25,7 @@ import { CoreModule } from './app-core/core.module';
     NgProgressModule.withConfig({
       thick: true,
       spinner: false,
-      color: '#FFC107'
+      color: '#E91E63'
     }),
     NgProgressHttpModule,
     CoreModule
