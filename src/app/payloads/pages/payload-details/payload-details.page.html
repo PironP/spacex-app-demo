@@ -8,16 +8,35 @@
       <ion-title *ngIf="payload">{{payload.payload_id}}</ion-title>
     </ion-toolbar>
   </ion-header>
-    
+
   <ion-content padding>
     <ng-container *ngIf="payload">
       <ion-card>
         <ion-card-header>
-          <ion-card-title>{{payload.payload_id}}</ion-card-title>
+          <ion-card-title class="mb-2">{{payload.payload_id}}</ion-card-title>
+          <ion-button *ngIf="payload.payload_type" size="small" color="primary" disabled="true">{{payload.payload_type}}</ion-button>
+          <ion-button *ngIf="payload.nationality" size="small" color="secondary" disabled="true">{{payload.nationality}}</ion-button>
         </ion-card-header>
-      
-        <ion-card-content>
 
+        <ion-card-content>
+            <p *ngIf="payload.manufacturer">
+              Manufacturer: {{payload.manufacturer}}
+            </p>
+            <p *ngIf="payload.orbit">
+              Orbit: {{payload.orbit}}
+            </p>
+            <p *ngIf="payload.payload_mass_kg">
+              Mass: {{payload.payload_mass_kg}}kg
+            </p>
+            <ng-container *ngIf="payload.customers.length > 0">
+                <p *ngIf="payload.customers.length === 1">Customer:</p>
+                <p *ngIf="payload.customers.length > 1">Customers:</p>
+                <ul>
+                  <li *ngFor="let customer of payload.customers">{{customer}}</li>
+                </ul>
+            </ng-container>
+            <ion-button *ngIf="payload.reused" size="small" color="success" disabled="true">has been reused</ion-button>
+            <ion-button *ngIf="!payload.reused" size="small" color="danger" disabled="true">not reused</ion-button>
         </ion-card-content>
       </ion-card>
     </ng-container>

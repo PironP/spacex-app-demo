@@ -20,7 +20,7 @@
         <ion-note color="secondary">{{launch.launch_site.site_name_long}}</ion-note>
         <ion-card-subtitle *ngIf="!launch.upcoming">{{launch.launch_date_utc | date:'fullDate'}}</ion-card-subtitle>
         <ion-card-subtitle *ngIf="launch.upcoming">Launch {{timeToLaunch}}</ion-card-subtitle>
-        <ion-button *ngIf="launch.upcoming" size="small" color="warning" disabled="true">Upcomming</ion-button>
+        <ion-button *ngIf="launch.upcoming" size="small" color="warning" disabled="true">Upcoming</ion-button>
         <ion-button *ngIf="!launch.upcoming && launch.success" size="small" color="success" disabled="true">Success</ion-button>
         <ion-button *ngIf="!launch.upcoming && !launch.success" size="small" color="danger" disabled="true">Failed</ion-button>
       </ion-card-header>
@@ -45,6 +45,11 @@
         <ng-container *ngIf="launch.details">
           <hr class="divider">
           <p class="launch-details">{{launch.details}}</p>
+        </ng-container>
+        <ng-container *ngIf="trustedVideoUrl">
+          <hr class="divider">
+          <h2 class="mb-3">Watch the launch on video:</h2>
+          <iframe width="100%" height="225" [src]="trustedVideoUrl" frameborder="0" allowfullscreen></iframe>
         </ng-container>
       </ion-card-content>
     </ion-card>
