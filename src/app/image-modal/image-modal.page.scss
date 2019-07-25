@@ -1,0 +1,15 @@
+.close-fake {
+    --background: transparent;
+    ion-icon {
+        font-size: 2rem;
+    }
+    margin-top: 40px;
+}
+
+ion-content {
+    --background: rgb(30, 30, 30);
+}
+
+ion-slides {
+    height: 80%;
+}

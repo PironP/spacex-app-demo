@@ -17,7 +17,16 @@
     <ion-list>
       <ng-container *ngFor="let rocket of rockets">
         <ion-item [routerLink]="['/rockets/', rocket.rocket_id]" routerDirection="forward">
-          {{rocket.rocket_name}}
+          <ion-thumbnail slot="start">
+            <img *ngIf="rocket.flickr_images.length > 0" [src]="rocket.flickr_images[0]">
+          </ion-thumbnail>
+          <ion-label class="d-inline">
+            <h2>{{rocket.rocket_name}}</h2>
+            <p *ngIf="rocket.company"> {{rocket.company}}</p>
+            <p class="text-danger" *ngIf="rocket.success_rate_pct && rocket.success_rate_pct < 50">{{rocket.success_rate_pct}}%</p>
+            <p class="text-success" *ngIf="rocket.success_rate_pct && rocket.success_rate_pct >= 50">{{rocket.success_rate_pct}}%</p>
+            <p class="font-italic" *ngIf="!rocket.success_rate_pct">Unknown success rate</p>
+          </ion-label>
         </ion-item>
       </ng-container>
     </ion-list>

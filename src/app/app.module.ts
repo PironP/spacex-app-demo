@@ -11,6 +11,7 @@ import { NgProgressHttpModule } from '@ngx-progressbar/http';
 import { HttpClientModule } from '@angular/common/http';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { CoreModule } from './app-core/core.module';
+import { ImageModalPageModule } from './image-modal/image-modal.module';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CoreModule } from './app-core/core.module';
       color: '#E91E63'
     }),
     NgProgressHttpModule,
-    CoreModule
+    CoreModule,
+    ImageModalPageModule,
   ],
   providers: [
     StatusBar,

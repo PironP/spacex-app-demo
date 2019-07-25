@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'rockets', loadChildren: './rockets/pages/rockets.module#RocketsPageModule' },
   { path: 'payloads', loadChildren: './payloads/pages/payloads.module#PayloadsPageModule' },
+  { path: 'image-modal', loadChildren: './image-modal/image-modal.module#ImageModalPageModule' },
   ];
 
 @NgModule({

@@ -14,19 +14,31 @@
     <ion-card>
       <ion-card-header>
         <ion-card-title>{{rocket.rocket_name}}</ion-card-title>
-        <ion-chip *ngIf="rocket.wikipedia" (click)="openLink(rocket.wikipedia)" color="dark">
-          <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
-          <ion-label>Wikipedia</ion-label>
-        </ion-chip>
+        <ion-card-subtitle *ngIf="rocket.company">
+          {{rocket.company}}
+          <span *ngIf="rocket.country"> | {{rocket.country}}</span>
+        </ion-card-subtitle>
       </ion-card-header>
 
       <ion-card-content>
         <ng-container *ngIf="rocket.flickr_images.length > 0">
             <img class="rocket-image" [src]="rocket.flickr_images[0]">
         </ng-container>
+        <ion-chip class="mt-3 mb-3" *ngIf="rocket.wikipedia" (click)="openLink(rocket.wikipedia)" color="dark">
+            <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
+            <ion-label>Wikipedia</ion-label>
+        </ion-chip>
+        <p>
+          {{rocket.description}}
+        </p>
       </ion-card-content>
-      <ion-card-content>
-        {{rocket.description}}
+
+      <ion-card-content *ngIf="rocket.flickr_images.length > 0">
+          <ion-slides [options]="sliderOpts" class="slider" padding>
+              <ion-slide *ngFor="let img of rocket.flickr_images">
+                  <img [src]="img" tappable (click)="openPreview(img)">
+              </ion-slide>
+            </ion-slides>
       </ion-card-content>
     </ion-card>
   </ng-container>
