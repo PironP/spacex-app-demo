@@ -19,11 +19,14 @@
 
       <ion-card-content>
         {{mission.description}}
+        <hr class="divider">
         <ion-row>
           <ion-chip *ngIf="mission.wikipedia" (click)="openLink(mission.wikipedia)" color="dark">
               <ion-icon src="/../assets/icons/wikipedia.svg"></ion-icon>
             <ion-label>Wikipedia</ion-label>
           </ion-chip>
+        </ion-row>
+        <ion-row>
           <ion-chip *ngIf="mission.twitter" (click)="openLink(mission.twitter)" color="primary">
             <ion-icon name="logo-twitter" color="primary"></ion-icon>
             <ion-label>Twitter</ion-label>
@@ -42,7 +45,9 @@
         <ng-container *ngIf="mission.payload_ids.length > 0">
           <h5>Payloads</h5>
           <ul>
-            <li *ngFor="let payload of mission.payload_ids">{{payload}}</li>
+            <li *ngFor="let payload of mission.payload_ids">
+              <a routerLink="/payloads/{{payload}}">{{payload}}</a>
+            </li>
           </ul>
         </ng-container>
       </ion-card-content>
