@@ -15,10 +15,6 @@ export class PayloadsPage implements OnInit {
 
   ngOnInit() {
     this.payloads$ = this.payloadsService.getPayloads();
-    // this.payloads$.toPromise()
-    //   .then(payloads => {
-    //     console.log(payloads);
-    //   });
   }
 
   doRefresh(event) {

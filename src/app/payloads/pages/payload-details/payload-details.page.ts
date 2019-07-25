@@ -19,7 +19,6 @@ export class PayloadDetailsPage implements OnInit {
 
   ngOnInit() {
     this.payload = this.route.snapshot.data.payload;
-    // console.log(this.payload);
   }
 
   goBack() {

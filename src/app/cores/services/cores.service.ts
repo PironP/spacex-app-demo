@@ -32,7 +32,7 @@ export class CoresService {
     );
   }
 
-   getUpcomingCores(): Observable<Core[]> {
+  getUpcomingCores(): Observable<Core[]> {
     const requestEndpoint = `${this.apiBaseUrl}/cores/upcoming`;
     return this.http.get<Core[]>(requestEndpoint).pipe(
       map((cores: Core[]) => {

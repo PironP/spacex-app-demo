@@ -20,7 +20,7 @@
       <ion-card-content>
         <ion-row>
           <ion-button *ngIf="ship.active" size="small" color="success" disabled="true">ACTIVE</ion-button>
-          <ion-button *ngIf="!ship.ship" size="small" color="danger" disabled="true">INACTIVE</ion-button>
+          <ion-button *ngIf="!ship.active" size="small" color="danger" disabled="true">INACTIVE</ion-button>
           <ion-chip *ngIf="ship.url" (click)="openLink(ship.url)" color="success">
             <ion-icon name="logo-chrome" color="success"></ion-icon>
             <ion-label>Website</ion-label>

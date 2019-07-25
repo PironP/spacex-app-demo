@@ -15,10 +15,6 @@ export class RocketsPage implements OnInit {
 
   ngOnInit() {
     this.rockets$ = this.rocketsService.getRockets();
-    // this.rockets$.toPromise()
-    //   .then(rockets => {
-    //     console.log(rockets);
-    //   });
   }
 
   doRefresh(event) {
