@@ -8,7 +8,7 @@
     </ion-button>
   </ion-toolbar>
 </ion-header>
-  
+
 <ion-content>
   <ion-card>
     <ion-card-header>
@@ -16,6 +16,11 @@
         {{dragon.name}}
       </ion-card-title>
     </ion-card-header>
+    <ion-card-content>
+        <ng-container *ngIf="dragon.flickr_images.length > 0">
+            <img [src]="dragon.flickr_images[0]">
+        </ng-container>
+    </ion-card-content>
     <ion-card-content>
       <ion-row>
         Crew Capacity : {{dragon.crew_capacity}}
@@ -60,9 +65,13 @@
           </ion-row>
         </ng-container>
       </ng-container>
-      <ion-row class="ion-margin-top">
-        <img *ngIf="dragon.flickr_images.length > 0" [src]="dragon.flickr_images[0]" class="dragon-img">
-      </ion-row>
+    </ion-card-content>
+    <ion-card-content *ngIf="dragon.flickr_images.length > 0">
+        <ion-slides [options]="sliderOpts" class="slider" padding>
+            <ion-slide *ngFor="let img of dragon.flickr_images">
+                <img [src]="img" tappable (click)="openPreview(img)">
+            </ion-slide>
+          </ion-slides>
     </ion-card-content>
   </ion-card>
 </ion-content>

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Dragon } from '../../models/dragon.models';
 import { ModalController, NavParams } from '@ionic/angular';
+import { ImageModalPage } from 'src/app/image-modal/image-modal.page';
 
 @Component({
   selector: 'app-dragon-details',
@@ -9,11 +10,18 @@ import { ModalController, NavParams } from '@ionic/angular';
 })
 export class DragonDetailsPage implements OnInit {
   dragon: Dragon;
-  test: string;
+
+  sliderOpts = {
+    zoom: false,
+    slidesPerView: 1.5,
+    spaceBetween: 20,
+    centeredSlides: true
+  };
 
   constructor(
     private modalCtrl: ModalController,
-    navParams: NavParams) {
+    navParams: NavParams,
+    private modalController: ModalController) {
     this.dragon = navParams.get('dragon');
   }
 
@@ -24,4 +32,12 @@ export class DragonDetailsPage implements OnInit {
     this.modalCtrl.dismiss();
   }
 
+  openPreview(img) {
+    this.modalController.create({
+      component: ImageModalPage,
+      componentProps: {img}
+    }).then(modal => {
+      modal.present();
+    });
+  }
 }
