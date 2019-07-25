@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { Router, RouterEvent } from '@angular/router';
 import { Storage } from '@ionic/storage';
-import { ThemeService } from './theme.service';
+import { ThemeService } from './app-core/services/theme.service';
 
 @Component({
   selector: 'app-root',

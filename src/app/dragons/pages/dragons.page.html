@@ -42,10 +42,7 @@
                 Orbit Duration : {{dragon.orbit_duration_yr}} years
               </ion-row>
               <ion-row>
-                Diameter : {{dragon.diameter.meters}} meters
-              </ion-row>
-              <ion-row>
-                Mass : {{dragon.dry_mass_kg}} Kg
+                  <ion-button size="small" color="dark" (click)="presentModal(dragon)">See full dragon's specs</ion-button>
               </ion-row>
               <ion-row class="ion-margin-top">
                 <p>{{dragon.description}}</p>

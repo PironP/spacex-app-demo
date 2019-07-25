@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title *ngIf="dragon">
+      {{dragon.name}}
+    </ion-title>
+    <ion-button size="large" slot="end" (click)="dismiss()">
+      <ion-icon name="close-circle"></ion-icon>
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        {{dragon.name}}
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        Crew Capacity : {{dragon.crew_capacity}}
+      </ion-row>
+      <ion-row>
+        First Flight : {{dragon.first_flight | date: 'dd/MM/yyyy'}}
+      </ion-row>
+      <ion-row>
+        Orbit Duration : {{dragon.orbit_duration_yr}} years
+      </ion-row>
+      <ion-row>
+        Diameter : {{dragon.diameter.meters}} meters
+      </ion-row>
+      <ion-row>
+        Mass : {{dragon.dry_mass_kg}} Kg
+      </ion-row>
+      <ion-row class="ion-margin-top">
+        <h4>Heat Shield</h4>
+        Developper : {{dragon.heat_shield.dev_partner}}
+        Material : {{dragon.heat_shield.material}}
+        Size : {{dragon.heat_shield.size_meters}} meters
+        Temperature : {{dragon.heat_shield.temp_degrees}} degrees.
+      </ion-row>
+      <ion-row class="ion-margin-top">
+        Payload Mass : {{dragon.launch_payload_mass.kg}} Kg
+      </ion-row>
+      <ng-container *ngIf="dragon.thrusters.length > 0" class="ion-margin-top">
+        <ion-row class="ion-margin-top">
+          <h4>Thrusters</h4>
+        </ion-row>
+        <ng-container class="ion-margin-top" *ngFor="let thruster of dragon.thrusters; index as i">
+          <ion-row>
+            Thruster {{i + 1}}
+          </ion-row>
+          <ion-row>
+            <ul>
+              <li>Type : {{thruster.type}}</li>
+              <li>Thrust : {{thruster.thrust.kN}} kN</li>
+              <li>Amount : {{thruster.amount}}</li>
+              <li>Pods : {{thruster.pods}}</li>
+            </ul>
+          </ion-row>
+        </ng-container>
+      </ng-container>
+      <ion-row class="ion-margin-top">
+        <img *ngIf="dragon.flickr_images.length > 0" [src]="dragon.flickr_images[0]" class="dragon-img">
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

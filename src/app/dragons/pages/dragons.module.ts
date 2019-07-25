@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { DragonsPage } from './dragons.page';
 import { CoreModule } from '../../app-core/core.module';
+import { DragonDetailsPage } from './dragon-details/dragon-details.page';
 
 const routes: Routes = [
   {
@@ -23,6 +24,7 @@ const routes: Routes = [
     CoreModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DragonsPage]
+  entryComponents: [DragonDetailsPage],
+  declarations: [DragonsPage, DragonDetailsPage]
 })
 export class DragonsPageModule {}
