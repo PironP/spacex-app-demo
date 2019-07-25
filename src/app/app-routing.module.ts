@@ -14,6 +14,7 @@ const routes: Routes = [
   { path: 'payloads', loadChildren: './payloads/pages/payloads.module#PayloadsPageModule' },
   { path: 'image-modal', loadChildren: './image-modal/image-modal.module#ImageModalPageModule' },
   { path: 'ships', loadChildren: './ships/pages/ships.module#ShipsPageModule' },
+  { path: 'dragons', loadChildren: './dragons/pages/dragons.module#DragonsPageModule' },
   ];
 
 @NgModule({

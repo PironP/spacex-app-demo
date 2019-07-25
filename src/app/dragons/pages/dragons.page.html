@@ -1,0 +1,63 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Dragons
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+    <ng-container *ngIf="dragons$ | async as dragons; else lottie_loader">
+      <ion-list>
+        <ng-container *ngFor="let dragon of dragons">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>{{dragon.name}}</ion-card-title>
+              <ion-card-subtitle>{{dragon.type}}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>    
+              <img *ngIf="dragon.flickr_images.length > 0" [src]="dragon.flickr_images[0]" class="dragon-img">
+              <ion-row>
+                <ion-button *ngIf="!dragon.active" size="small" color="danger" disabled="true">INACTIVE</ion-button>
+                <ion-button *ngIf="dragon.wikipedia" color="success" expand="block" fill="outline" size="small"
+                  (click)="openLink(dragon.wikipedia)">
+                  <ion-icon slot="start" src="/../assets/icons/wikipedia.svg"></ion-icon>
+                  Wikipedia
+                </ion-button>
+                <ion-button *ngIf="dragon.active" size="small" color="success" disabled="true">ACTIVE</ion-button>
+              </ion-row>
+              <ion-row class="ion-margin-top">
+                Crew Capacity : {{dragon.crew_capacity}}
+              </ion-row>
+              <ion-row>
+                First Flight : {{dragon.first_flight | date: 'dd/MM/yyyy'}}
+              </ion-row>
+              <ion-row>
+                Orbit Duration : {{dragon.orbit_duration_yr}} years
+              </ion-row>
+              <ion-row>
+                Diameter : {{dragon.diameter.meters}} meters
+              </ion-row>
+              <ion-row>
+                Mass : {{dragon.dry_mass_kg}} Kg
+              </ion-row>
+              <ion-row class="ion-margin-top">
+                <p>{{dragon.description}}</p>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
+        </ng-container>
+      </ion-list>
+    </ng-container>
+  </ion-content>
+  
+  <ng-template #lottie_loader>
+    <app-lottie-loader></app-lottie-loader>
+  </ng-template>
+  

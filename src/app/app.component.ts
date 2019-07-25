@@ -55,6 +55,10 @@ export class AppComponent {
     {
       title: 'Ships',
       url: '/ships',
+    },
+    {
+      title: 'Dragons',
+      url: '/dragons',
     }
   ];
 
